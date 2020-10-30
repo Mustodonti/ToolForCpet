@@ -1,0 +1,55 @@
+﻿<Window x:Class="ToolForCpet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToolForCpet"
+        xmlns:controls="clr-namespace:ToolForCpet.Controls"
+        xmlns:vm="clr-namespace:ToolForCpet.ViewModel"
+        mc:Ignorable="d"
+        Title="ToolForCpet" Height="500" Width="800">
+    <TabControl>
+        <TabItem Header="Settings" IsSelected="True">
+            <Grid>
+                
+            </Grid>
+        </TabItem>
+        <TabItem Header="Diagnostics">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="500"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Background="DarkGray" Grid.Column="1"/>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Путь к файлу типа .cdt"/>
+                    <TextBox x:Name="SourcePathButton"/>
+                    <Button Content="Обзор" Name="overViewButton" Click="overViewButton_Click"/>
+                    <TextBlock Text="{Binding ElementName=SliderBreath,Path=Value}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" >
+                    <Slider Name="SliderBreath" Maximum="{Binding Path=BreathCount, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Value="{Binding Path=CurrentItem,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <!--<controls:FVL_Chart/>-->
+                    <controls:FlowChart />
+                    <!--<controls:O2_Chart/>
+                    <controls:CO2_Chart/>-->
+                    <!--<ItemsControl>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="fdgbvdfgdfg"/>
+                                    <controls:FVL_Chart/>
+                                    <controls:FlowChart/>
+                                    <controls:O2_Chart/>
+                                    <controls:CO2_Chart/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>-->
+                    
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
