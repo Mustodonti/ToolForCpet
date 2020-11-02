@@ -7,11 +7,11 @@
         xmlns:controls="clr-namespace:ToolForCpet.Controls"
         xmlns:vm="clr-namespace:ToolForCpet.ViewModel"
         mc:Ignorable="d"
-        Title="ToolForCpet" Height="500" Width="800">
+        Title="ToolForCpet" Height="1200" Width="1920">
     <TabControl>
         <TabItem Header="Settings" IsSelected="True">
             <Grid>
-                
+
             </Grid>
         </TabItem>
         <TabItem Header="Diagnostics">
@@ -19,7 +19,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2"/>
-                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="1400"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Background="DarkGray" Grid.Column="1"/>
                 <StackPanel Grid.Column="0">
@@ -28,10 +28,11 @@
                     <Button Content="Обзор" Name="overViewButton" Click="overViewButton_Click"/>
                     <TextBlock Text="{Binding ElementName=SliderBreath,Path=Value}"/>
                 </StackPanel>
-                <StackPanel Grid.Column="2" >
+                <StackPanel Grid.Column="2" Grid.ColumnSpan="2" >
+                    <controls:FlowChart Width="1400" Height="200"/>
                     <Slider Name="SliderBreath" Maximum="{Binding Path=BreathCount, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Value="{Binding Path=CurrentItem,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                     <!--<controls:FVL_Chart/>-->
-                    <controls:FlowChart />
+
                     <!--<controls:O2_Chart/>
                     <controls:CO2_Chart/>-->
                     <!--<ItemsControl>
@@ -47,7 +48,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>-->
-                    
+
                 </StackPanel>
             </Grid>
         </TabItem>

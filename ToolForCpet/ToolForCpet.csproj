@@ -138,12 +138,36 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SPIRODATE_ForTest\Анатолий 60сек\data.cdt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Command\" />
+    <Folder Include="SPIRODATE_ForTest\User1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SPIRODATE_ForTest\Анатолий 60сек\co2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Анатолий 60сек\Flow.txt" />
+    <Resource Include="SPIRODATE_ForTest\Анатолий 60сек\o2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Анатолий 60сек\Record.txt" />
+    <Resource Include="SPIRODATE_ForTest\Йонас 60 сек\co2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Йонас 60 сек\Flow.txt" />
+    <Resource Include="SPIRODATE_ForTest\Йонас 60 сек\o2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Йонас 60 сек\Record.txt" />
+    <Resource Include="SPIRODATE_ForTest\Максим 60 сек\co2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Максим 60 сек\Flow.txt" />
+    <Resource Include="SPIRODATE_ForTest\Максим 60 сек\o2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Максим 60 сек\Record.txt" />
+    <Resource Include="SPIRODATE_ForTest\Настя 60 сек\co2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Настя 60 сек\Flow.txt" />
+    <Resource Include="SPIRODATE_ForTest\Настя 60 сек\o2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Настя 60 сек\Record.txt" />
+    <Resource Include="SPIRODATE_ForTest\Сергей 20 сек\co2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Сергей 20 сек\Flow.txt" />
+    <Resource Include="SPIRODATE_ForTest\Сергей 20 сек\o2.txt" />
+    <Resource Include="SPIRODATE_ForTest\Сергей 20 сек\Record.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

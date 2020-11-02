@@ -8,10 +8,28 @@
              xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
              xmlns:local="clr-namespace:ToolForCpet.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="400">
-    <Grid>
-        <WindowsFormsHost Grid.Column="2"  >
-            <dvc:Chart x:Name="chartFlow"  />
-        </WindowsFormsHost>
-    </Grid>
+             
+             d:DesignHeight="200" d:DesignWidth="1400">
+    <StackPanel>
+        <ItemsControl  ItemsSource="{Binding LinesFlow}" Background="LightGray">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas Width="1400" Height="200"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Path Stroke="Black" StrokeThickness="2">
+                        <Path.Data>
+                            <GeometryGroup >
+                                <RectangleGeometry Rect="0,0,1400,200" />
+                                <LineGeometry StartPoint="{Binding From}" EndPoint="{Binding To}" />
+                            </GeometryGroup>
+                        </Path.Data>
+                    </Path>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!--<ListView ItemsSource="{Binding Lines}" />-->
+    </StackPanel>
 </UserControl>

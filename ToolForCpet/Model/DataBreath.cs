@@ -87,16 +87,17 @@ namespace ToolForCpet.Model
 
         public DataBreath(Breath breath)
         {
-            ExpirationY = breath.Expiration;
-            for(int i=0;i<ExpirationY.Count;i++)
-            {
-                ExpirationX.Add(i * 0.01);
-            }
             InspirationY = breath.Inspiration;
             for (int i = 0; i < InspirationY.Count; i++)
             {
-                InspirationX.Add((i+ ExpirationY.Count()) * 0.01);
+                InspirationX.Add(i * 0.01);
             }
+            ExpirationY = breath.Expiration;
+            for(int i=0;i<ExpirationY.Count;i++)
+            {
+                ExpirationX.Add((i+ InspirationY.Count) * 0.01);
+            }
+            
 
             BreathingFrequenceValue = breath.BreathingFrequenceValue;
             Volume = breath.Volume;
