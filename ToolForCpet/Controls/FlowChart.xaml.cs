@@ -33,9 +33,22 @@ namespace ToolForCpet.Controls
             DataContext = md;
             //gi.AddDataXY(md.SelectedBreath.ExpirationX,md.SelectedBreath.ExpirationY.Select(i=>-i.Flow).ToList(),0);
             //gi.AddDataXY(md.SelectedBreath.InspirationX, md.SelectedBreath.InspirationY.Select(i => i.Flow).ToList(), 1);
-            FormattedText text = new FormattedText("Text to display", CultureInfo.CurrentCulture,  FlowDirection.LeftToRight, new Typeface("Tahoma"), 16,  Brushes.Black);
-            Geometry geometry = text.BuildGeometry(new Point(5, 5));
+            List<TextBlock> txbList = new List<TextBlock>();
 
+
+            TextBlock txBl = new TextBlock();
+            txBl.Text = "dfdfdfdfdf";
+            txBl.FontSize = 40;
+            Canvas.SetLeft(txBl, 100);
+            Canvas.SetTop(txBl, 200);
+            txbList.Add(txBl);
+            txbList.ForEach(i=> FlowCanvas.Children.Add(i));
+        }
+        private List<TextBlock> CreateListTextBlock(object sender,int numberOfdivisions)
+        {
+            var lstTB = new List<TextBlock>();
+
+            return lstTB;
         }
     }
 }

@@ -10,15 +10,16 @@
              mc:Ignorable="d" 
              
              d:DesignHeight="200" d:DesignWidth="1400">
-    <StackPanel>
-        <ItemsControl  ItemsSource="{Binding LinesFlow}" Background="LightGray">
+    <Canvas Width="1400" Height="200" x:Name="FlowCanvas">
+        <ItemsControl  ItemsSource="{Binding LinesFlow}" Background="LightGray" Name="q">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <Canvas Width="1400" Height="200"/>
+                    <Grid>
+                    </Grid>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate >
                     <Path Stroke="Black" StrokeThickness="2">
                         <Path.Data>
                             <GeometryGroup >
@@ -31,5 +32,6 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         <!--<ListView ItemsSource="{Binding Lines}" />-->
-    </StackPanel>
+    </Canvas>
+    
 </UserControl>
