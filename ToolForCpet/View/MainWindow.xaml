@@ -7,15 +7,15 @@
         xmlns:controls="clr-namespace:ToolForCpet.Controls"
         xmlns:vm="clr-namespace:ToolForCpet.ViewModel"
         mc:Ignorable="d"
-        Title="ToolForCpet" Height="1200" Width="1920">
+        Title="ToolForCpet"  WindowState="Maximized">
     <TabControl>
-        <TabItem Header="Settings" IsSelected="True">
+        <TabItem Header="Settings" >
             <Grid>
 
             </Grid>
         </TabItem>
-        <TabItem Header="Diagnostics">
-            <Grid>
+        <TabItem Header="Diagnostics" IsSelected="True">
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2"/>
@@ -25,12 +25,13 @@
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Путь к файлу типа .cdt"/>
                     <TextBox x:Name="SourcePathButton"/>
-                    <Button Content="Обзор" Name="overViewButton" Click="overViewButton_Click"/>
+                    <Button Content="Обзор" Name="overViewButton" Click="OverViewButton_Click"/>
                     <TextBlock Text="{Binding ElementName=SliderBreath,Path=Value}"/>
+                    
                 </StackPanel>
                 <StackPanel Grid.Column="2" Grid.ColumnSpan="2" >
-                    <controls:FlowChart Width="1400" Height="200"/>
-                    <Slider Name="SliderBreath" Maximum="{Binding Path=BreathCount, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Value="{Binding Path=CurrentItem,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <controls:FlowChart Width="1400" Height="200" x:Name="FlowChart"/>
+                    <Slider Name="SliderBreath" Maximum="{Binding Path=BreathCount, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Value="{Binding Path=CurrentItem,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Delay="0"/>
                     <!--<controls:FVL_Chart/>-->
 
                     <!--<controls:O2_Chart/>

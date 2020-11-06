@@ -33,8 +33,9 @@ namespace ToolForCpet
             DataContext = ApplicationViewModel.Instance(GetListBreathFromCDT(@"C:\temp\data.cdt"));
             InitializeComponent();
            
+           
         }
-        private void overViewButton_Click(object sender, RoutedEventArgs e)
+        private void OverViewButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 

@@ -3,15 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
-             xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-             xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
              xmlns:local="clr-namespace:ToolForCpet.Controls"
              mc:Ignorable="d" 
-             
              d:DesignHeight="200" d:DesignWidth="1400">
-    <Canvas Width="1400" Height="200" x:Name="FlowCanvas">
-        <ItemsControl  ItemsSource="{Binding LinesFlow}" Background="LightGray" Name="q">
+    <Canvas Width="1400" Height="200" x:Name="FlowCanvas" MouseMove="FlowCanvas_MouseMove" MouseLeave="FlowCanvas_MouseLeave" Background="#F0EEEE" >
+        <ItemsControl  ItemsSource="{Binding LinesFlow}"  Name="ItemsControlContainer" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -19,19 +15,18 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate >
-                    <Path Stroke="Black" StrokeThickness="2">
-                        <Path.Data>
-                            <GeometryGroup >
-                                <RectangleGeometry Rect="0,0,1400,200" />
-                                <LineGeometry StartPoint="{Binding From}" EndPoint="{Binding To}" />
-                            </GeometryGroup>
-                        </Path.Data>
-                    </Path>
+                <DataTemplate x:Name="jopa">
+                    <Grid x:Name="ffff">
+                        <Line Loaded="Line_Loaded"/>
+                        <Line X1="0" Y1="100" X2="{Binding ElementName=FlowCanvas,Path=Width}" Y2="100" Stroke="Black" StrokeThickness="2" />
+                        <Line  X1="{Binding From.X}" Y1="{Binding From.Y}"
+                      X2="{Binding To.X}" Y2="{Binding To.Y}"
+                      Stroke="Red" StrokeThickness="3" ToolTipService.InitialShowDelay="0" ToolTipService.BetweenShowDelay="0" ToolTipService.HasDropShadow="True">
+                        </Line>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <!--<ListView ItemsSource="{Binding Lines}" />-->
     </Canvas>
-    
+
 </UserControl>

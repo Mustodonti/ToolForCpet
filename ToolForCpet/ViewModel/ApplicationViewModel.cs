@@ -62,7 +62,8 @@ namespace ToolForCpet.ViewModel
             {
                 _currentItem = value;
                 selectedBreath = Breathes[value];
-                Debug.WriteLine($"{selectedBreath.InspirationY.Count()}         {_currentItem}");
+                
+                Debug.WriteLine($"{selectedBreath.InspirationY.Count()}    {_currentItem}");
                 DrawingFlow();
                 OnPropertyChanged("CurrentItem");
             }
@@ -85,7 +86,7 @@ namespace ToolForCpet.ViewModel
 
             breaths.ForEach(i => Breathes.Add(new DataBreath(i)));
             CurrentItem = 10;
-            
+
         }
 
         private void Drawing()
@@ -108,46 +109,61 @@ namespace ToolForCpet.ViewModel
         private void DrawingFlow()
         {
             LinesFlow.Clear();
-            App.Current?.Dispatcher?.Invoke(() => 
+            App.Current?.Dispatcher?.Invoke(() =>
             {
-                double cFx1 = 1400/(Breathes[CurrentItem].ExpirationX.Max());
-                double cFx2 = (Breathes[CurrentItem].InspirationY.Select(i=>i.Flow).Max() > Breathes[CurrentItem].ExpirationY.Select(i=>i.Flow).Max()) ? 100/ Breathes[CurrentItem].InspirationY.Select(i => i.Flow).Max() : 100/ Breathes[CurrentItem].ExpirationY.Select(i => i.Flow).Max();
+               
+                double cFx1 = 1400 / (Breathes[CurrentItem].ExpirationX.Max());
+                double cFx2 = (Breathes[CurrentItem].InspirationY.Select(i => i.Flow).Max() > Breathes[CurrentItem].ExpirationY.Select(i => i.Flow).Max()) ? 100 / Breathes[CurrentItem].InspirationY.Select(i => i.Flow).Max() : 100 / Breathes[CurrentItem].ExpirationY.Select(i => i.Flow).Max();
                 for (int i = 0; i < Breathes[CurrentItem].InspirationX.Count() - 1; i++)
                 {
-                   
+
                     LinesFlow.Add(new Line
                     {
-                        From = new System.Windows.Point(Breathes[CurrentItem].InspirationX[i] *cFx1, Breathes[CurrentItem].InspirationY[i].Flow *-cFx2 + 100),
-                        To = new System.Windows.Point(Breathes[CurrentItem].InspirationX[i+1] * cFx1, Breathes[CurrentItem].InspirationY[i+1].Flow *-cFx2 + 100)
+                        FromX = Breathes[CurrentItem].InspirationX[i],
+                        FromY = Breathes[CurrentItem].InspirationY[i].Flow,
+                        From = new System.Windows.Point(Breathes[CurrentItem].InspirationX[i] * cFx1,Breathes[CurrentItem].InspirationY[i].Flow * -cFx2 + 100),
+                        ToX = Breathes[CurrentItem].InspirationX[i + 1],
+                        ToY = Breathes[CurrentItem].InspirationY[i+1].Flow,
+                        To = new System.Windows.Point(Breathes[CurrentItem].InspirationX[i + 1] * cFx1, Breathes[CurrentItem].InspirationY[i + 1].Flow * -cFx2 + 100)
+                    });
+                }
+
+                for (int i = 0; i < Breathes[CurrentItem].ExpirationX.Count() - 1; i++)
+                {
+                    LinesFlow.Add(new Line
+                    {
+                        FromX = Breathes[CurrentItem].ExpirationX[i],
+                        FromY = Breathes[CurrentItem].ExpirationY[i].Flow,
+                        From = new System.Windows.Point(Breathes[CurrentItem].ExpirationX[i] * cFx1, Breathes[CurrentItem].ExpirationY[i].Flow * cFx2 + 100),
+                        ToX = Breathes[CurrentItem].ExpirationX[i+1],
+                        ToY = Breathes[CurrentItem].ExpirationY[i+1].Flow,
+                        To = new System.Windows.Point(Breathes[CurrentItem].ExpirationX[i + 1] * cFx1, Breathes[CurrentItem].ExpirationY[i + 1].Flow * cFx2 + 100)
                     });
                 }
                
-                for (int i=0;i<Breathes[CurrentItem].ExpirationX.Count()-1;i++)
-                {
-                    LinesFlow.Add(new Line
-                    {
-                        From = new System.Windows.Point(Breathes[CurrentItem].ExpirationX[i]*cFx1, Breathes[CurrentItem].ExpirationY[i].Flow*cFx2+100),
-                        To = new System.Windows.Point(Breathes[CurrentItem].ExpirationX[i+1]*cFx1, Breathes[CurrentItem].ExpirationY[i+1].Flow*cFx2+100)
-                    });
-                }
 
-                
             });
+            
 
         }
-
+ 
         public ObservableCollection<Line> LinesFlow { get; } = new ObservableCollection<Line>();
         private int _k = 0;
         public class Line
         {
             public System.Windows.Point From { get; set; }
+            public double FromY { get; set; }
+            public double FromX { get; set; }
 
             public System.Windows.Point To { get; set; }
+            public double ToY { get; set; }
+            public double ToX { get; set; }
 
             public override string ToString()
             {
                 return $"{From.X} {From.Y} {To.X} {To.Y}";
             }
+            
         }
     }
 }
